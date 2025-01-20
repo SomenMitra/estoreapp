@@ -92,7 +92,7 @@ public class EstoreController {
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
 		} catch (Exception e) {
-			 log.error("Exception occurred in :: getProductById :: ", e);
+			 log.error("Exception occurred in :: getProductById  :: ", e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
