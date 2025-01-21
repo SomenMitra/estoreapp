@@ -18,7 +18,7 @@ public interface OrderRepo extends JpaRepository<Orders, Integer> {
 	@Modifying
 	@Transactional
 	@Query(value = 
-	"INSERT INTO orderdetails (orderId, productId, qty, price, amount) "
+	"INSERT INTO orderdetails (order_id, productId, qty, price, amount) "
 + "VALUES (:orderId, :productId, :qty, :price, :amount)"
 			, nativeQuery = true)
 	void saveInOrderDetails(@Param("orderId") Integer orderId, @Param("productId") Integer prodId,
@@ -32,8 +32,8 @@ public interface OrderRepo extends JpaRepository<Orders, Integer> {
 		List<Map<String, Object>> getAllOrderList(@Param("userId") Integer userId);
 
 	
-	@Query(value = "select orderdetails.*, products.product_name as productName, products.product_img as productImg from orderDetails, products "
-			+ "where orderDetails.productId = products.id and order_id = :orderId",
+	@Query(value = "select orderdetails.*, products.product_name as productName, products.product_img as productImg from orderdetails, products "
+			+ "where orderdetails.productId = products.id and order_id = :orderId",
 			nativeQuery = true)
 	List<Map<String, Object>> getOrderProductsList(@Param("orderId") Integer orderId);
 
